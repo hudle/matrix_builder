@@ -1,5 +1,5 @@
 name: matrix_builder
-description: A new Flutter project.
+description: A Scrollable table for flutter with fixed row and column header.
 version: 0.0.1-alpha0
 homepage: https://github.com/hudle/matrix_builder
 
