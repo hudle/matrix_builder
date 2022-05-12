@@ -18,7 +18,8 @@ class MatrixBuilder extends StatefulWidget {
   final double columnWidth;
 
   const MatrixBuilder(
-      {required this.cellBuilder,
+      {Key? key,
+      required this.cellBuilder,
       required this.rowCount,
       required this.columnCount,
       required this.headBuilder,
@@ -27,7 +28,8 @@ class MatrixBuilder extends StatefulWidget {
       this.cellHeight = 80.0,
       this.headerHeight = 50.0,
       this.headerWidth = 80.0,
-      this.columnWidth = 50.0});
+      this.columnWidth = 50.0})
+      : super(key: key);
 
   @override
   State<MatrixBuilder> createState() => _MatrixBuilderState();
@@ -89,8 +91,7 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      //color: Colors.red,
+    return SizedBox(
       height: headerHeight,
       child: Row(
         children: [
@@ -118,6 +119,7 @@ class HeaderWidget extends StatelessWidget {
   }
 
   const HeaderWidget({
+    Key? key,
     required this.scrollController,
     required this.count,
     required this.headBuilder,
@@ -125,7 +127,7 @@ class HeaderWidget extends StatelessWidget {
     required this.tileWidth,
     required this.columnWidth,
     required this.cellWidth,
-  });
+  }) : super(key: key);
 }
 
 /// Builds the cells and column of the matrix.Accepts Row Count, Column count, cell Builder and Column builder as Arguments
@@ -142,7 +144,8 @@ class CellWidget extends StatefulWidget {
   @override
   State<CellWidget> createState() => _CellWidgetState();
 
-  CellWidget({
+  const CellWidget({
+    Key? key,
     required this.scrollController,
     required this.columnCount,
     required this.rowCount,
@@ -151,7 +154,7 @@ class CellWidget extends StatefulWidget {
     required this.columnWidth,
     required this.cellWidth,
     required this.cellHeight,
-  });
+  }) : super(key: key);
 }
 
 class _CellWidgetState extends State<CellWidget> {

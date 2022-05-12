@@ -11,29 +11,85 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Scrollable table for flutter with fixed row and column header.
+Inspired by [Crizant Lai's post on Medium](https://medium.com/nerd-for-tech/flutter-creating-a-two-direction-scrolling-table-with-fixed-head-and-column-4a34fc01378f)
 
 ## Features
+This package consist of 3 parts:
+- Column Builder: Builds the leftmost fixed row header.
+```
+columnBuilder (BuildContext context, int column) {
+            return Container(
+            child: Text("Column Count: $column"),
+         );
+    }
+```
+- Header Builder: Builds the topmost fixed column header.
+```
+headBuilder: (BuildContext context, int row) {
+            return Container(
+            child:Text("Row Count: row"),
+            );
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+          }
+```
+- Cell Builder: Build the cells for the matrix according to row and column length specified.
+```
+cellBuilder: (BuildContext context, int row, int column) {
+            return Container(
+            child:Text("$row*$column")
+            );
+          }
+```
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+<img alt="ScreenShot" src="doc/pictures/Screenshot_1.png" width="300"/>
+ &nbsp;
+<img alt="Gif" src="doc/pictures/Gif_1.gif" width="300" >
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+This example creates a 10*10 grid, that is scrollable in both directions
 
 ```dart
-const like = 'sample';
+class MyExampleApp extends StatelessWidget {
+  const MyExampleApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Matrix Builder Demo"),
+      ),
+      body: SafeArea(
+        child: MatrixBuilder(
+          columnBuilder: (BuildContext context, int column) {
+            return Container(
+              child: Text("Column Count $column"),
+            );
+          },
+          cellBuilder: (BuildContext context, int row, int column) {
+            return box("$row*$column");
+          },
+          headBuilder: (BuildContext context, int row) {
+            return box("$row");
+          },
+          rowCount: 10,
+          columnCount: 10,
+        ),
+      ),
+    );
+  }
+
+  Widget box(String text) => Container(
+        child: Center(child: Text(text)),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.blueAccent),
+        ),
+        margin: const EdgeInsets.only(left: 5, right: 5, top: 10, bottom: 5),
+        height: 70,
+        width: 70,
+      );
+}
 ```
 
-## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.

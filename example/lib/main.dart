@@ -25,17 +25,19 @@ class MyExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Matrix Builder Demo"),
+        title: const Text("Matrix Builder Demo"),
       ),
       body: SafeArea(
         child: MatrixBuilder(
-          columnBuilder: (BuildContext, int column) {
-            return box("$column");
+          columnBuilder: (BuildContext context, int column) {
+            return Container(
+              child: Text("Column Count $column"),
+            );
           },
-          cellBuilder: (BuildContext, int row, int column) {
+          cellBuilder: (BuildContext context, int row, int column) {
             return box("$row*$column");
           },
-          headBuilder: (BuildContext, int row) {
+          headBuilder: (BuildContext context, int row) {
             return box("$row");
           },
           rowCount: 10,
