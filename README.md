@@ -42,9 +42,9 @@ cellBuilder: (BuildContext context, int row, int column) {
           }
 ```
 
-<img alt="ScreenShot" src="doc/pictures/Screenshot_1.png" width="300"/>
+<img alt="ScreenShot" src="static-assets/Screenshot_1.png" width="300"/>
  &nbsp;
-<img alt="Gif" src="doc/pictures/Gif_1.gif" width="300" >
+<img alt="Gif" src="static-assets/Gif_1.gif" width="300" >
 
 ## Usage
 
@@ -91,5 +91,11 @@ class MyExampleApp extends StatelessWidget {
       );
 }
 ```
-
+## Dependency
+```
+dependencies:
+  flutter:
+    sdk: flutter
+  linked_scroll_controller: ^0.2.0
+```
 

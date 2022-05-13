@@ -1,3 +1,4 @@
-## 0.0.1
+## [1.0.0] - 2022-05-13
 
-* TODO: Describe initial release.
+* example app created 
+
